@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { BadgeCheck, ScrollText } from 'lucide-react';
 import { useRef } from 'react';
@@ -13,6 +14,8 @@ export default function StorySection() {
     });
 
     const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+    const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+    const listY = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"]);
 
     return (
         <section ref={ref} className="py-32 px-6 bg-background-dark relative z-10">
@@ -33,6 +36,31 @@ export default function StorySection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                     {/* Levitating Container + 3D Tilt */}
                     <TiltWrapper className="order-2 md:order-1 relative aspect-square group perspective-1000">
+                        {/* Floating Particles */}
+                        {[...Array(3)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                animate={{
+                                    y: [0, -20, 0],
+                                    opacity: [0.5, 1, 0.5],
+                                    scale: [1, 1.2, 1]
+                                }}
+                                transition={{
+                                    duration: 3 + i,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: i * 0.5
+                                }}
+                                className={`absolute w-2 h-2 rounded-full bg-primary/60 blur-[1px] z-20`}
+                                style={{
+                                    top: `${20 + i * 30}%`,
+                                    left: `${10 + (i % 2) * 80}%`
+                                }}
+                            />
+                        ))}
+                        {/* Magical Glow Behind */}
+                        <div className="absolute inset-4 bg-primary/40 blur-[50px] rounded-full z-0 animate-pulse" />
+
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
@@ -45,42 +73,46 @@ export default function StorySection() {
                                     ease: "easeInOut"
                                 }
                             }}
-                            className="w-full h-full rounded-3xl overflow-hidden bg-white/5 border border-white/10 relative"
+                            className="w-full h-full rounded-[2rem] overflow-hidden bg-white/5 border border-white/20 relative z-10 shadow-2xl backdrop-blur-sm"
                         >
                             <motion.div
                                 style={{ y: imgY, scale: 1.1 }}
-                                className="w-full h-full bg-cover bg-center transition-transform duration-700"
+                                className="w-full h-full relative"
                             >
-                                <div
-                                    className="w-full h-full bg-cover bg-center"
-                                    style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBg28xUwAkRJF0q5aUzvEIcVMlwVPfwq_nWKWpt6sIQJNA9UtcfiCHfTl2tQB_TqXgDqv6wVsO9tiObhn6pPrSpzpGgmh6DD_GSlcFiGLwwV4hIc3KP0LR4mmzRRds1jkhCmX4Mftt_i_JypRTQsjrDv9LbrrR603Pu-BqKu0FswQijwFTahytScqrpX00ewbR4C5G7hk-l3r3vCOoaEfFem6NrEuWymOpKxu71aRDoGGi99QWAxIqxrzQ1vCh7n9smS8W_QRcPlBZC')" }}
+                                <Image
+                                    src="/amour.png"
+                                    alt="Amour et Douceur"
+                                    fill
+                                    className="object-cover transition-transform duration-700 hover:scale-105"
                                 />
                             </motion.div>
                             {/* Overlay Shine */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                         </motion.div>
                     </TiltWrapper>
 
                     <div className="text-left space-y-8 px-4 md:px-0 order-1 md:order-2">
-                        <motion.h3
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="text-3xl md:text-5xl font-light text-white/90"
-                        >
-                            Présence <br /><span className="font-bold text-white">Rassurante</span>
-                        </motion.h3>
-                        <motion.p
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="text-xl text-white/50 leading-relaxed font-light"
-                        >
-                            Plus qu&apos;un simple objet, c&apos;est une promesse de réconfort nocturne et un ancrage émotionnel permanent dans votre foyer.
-                        </motion.p>
+                        <motion.div style={{ y: textY }}>
+                            <motion.h3
+                                initial={{ opacity: 0, x: 50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="text-3xl md:text-5xl font-light text-white/90"
+                            >
+                                Présence <br /><span className="font-bold text-white">Rassurante</span>
+                            </motion.h3>
+                            <motion.p
+                                initial={{ opacity: 0, x: 50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-xl text-white/50 leading-relaxed font-light mt-8"
+                            >
+                                Plus qu&apos;un simple objet, c&apos;est une promesse de réconfort nocturne et un ancrage émotionnel permanent dans votre foyer.
+                            </motion.p>
+                        </motion.div>
 
-                        <div className="pt-4 space-y-4">
+                        <motion.div style={{ y: listY }} className="pt-4 space-y-4">
                             {[
                                 { icon: BadgeCheck, text: "Matériaux premium hypoallergéniques" },
                                 { icon: ScrollText, text: "Certificat d'authenticité inclus" }
@@ -99,10 +131,12 @@ export default function StorySection() {
                                     <span className="text-lg">{item.text}</span>
                                 </motion.div>
                             ))}
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
+            {/* Smooth transition to next section */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1f1618] to-transparent pointer-events-none" />
         </section>
     );
 }

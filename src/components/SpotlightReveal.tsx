@@ -25,17 +25,28 @@ export default function SpotlightReveal({ text, className = '' }: SpotlightRevea
         };
 
 
+        const handleTouchMove = (e: TouchEvent) => {
+            if (!containerRef.current || e.touches.length === 0) return;
+
+            const rect = containerRef.current.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const y = e.touches[0].clientY - rect.top;
+
+            setPosition({ x, y });
+            setOpacity(1);
+        };
+
         const container = containerRef.current;
         if (container) {
             window.addEventListener('mousemove', handleMouseMove);
-            // We use window mousemove so it works even if hovering over other elements, 
-            // but we calculate relative to this container to position the mask correctly if it covers the screen.
-            // If we want it to be global (like a flashlight in the dark room of the hero section), 
-            // we can attach listener to window.
+            window.addEventListener('touchmove', handleTouchMove, { passive: true });
+            window.addEventListener('touchstart', handleTouchMove, { passive: true });
         }
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchstart', handleTouchMove);
         };
     }, []);
 

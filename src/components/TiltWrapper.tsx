@@ -50,7 +50,7 @@ export default function TiltWrapper({ children, className = "" }: { children: Re
             }}
             className={className}
         >
-            <div style={{ transform: "translateZ(30px)" }}>
+            <div style={{ transform: "translateZ(30px)" }} className="w-full h-full">
                 {children}
             </div>
         </motion.div>

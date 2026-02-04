@@ -57,6 +57,13 @@ export default function ConstellationBackground() {
             mouse.y = e.clientY;
         };
 
+        const handleTouchMove = (e: TouchEvent) => {
+            if (e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+            }
+        };
+
         // Animation loop
         const animate = () => {
             ctx.clearRect(0, 0, width, height);
@@ -112,6 +119,8 @@ export default function ConstellationBackground() {
 
         window.addEventListener('resize', handleResize);
         window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('touchmove', handleTouchMove, { passive: true });
+        window.addEventListener('touchstart', handleTouchMove, { passive: true });
 
         handleResize();
         animate();
@@ -119,6 +128,8 @@ export default function ConstellationBackground() {
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchstart', handleTouchMove);
         };
     }, []);
 
