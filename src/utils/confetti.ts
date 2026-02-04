@@ -34,7 +34,7 @@ export const triggerHeartExplosion = () => {
             ...defaults,
             particleCount: 30,
             scalar: 2,
-            shapes: ['heart']
+            shapes: ['heart' as any]
         });
     };
 
