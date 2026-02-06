@@ -36,7 +36,7 @@ export default function GiftNotePreview() {
     };
 
     return (
-        <section className={`py-32 px-6 bg-[#1f1618] ${handwritten.variable}`}>
+        <section className={`py-32 px-6 bg-background-light ${handwritten.variable}`}>
             <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
                 {/* Input Side */}
@@ -50,8 +50,8 @@ export default function GiftNotePreview() {
                             <PenTool className="w-4 h-4" />
                             <span className="uppercase tracking-widest">Inclus gratuitement</span>
                         </div>
-                        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Mots Doux</h2>
-                        <p className="text-white/60 text-lg font-light leading-relaxed mb-8">
+                        <h2 className="text-4xl md:text-6xl font-bold text-text-main mb-6">Mots Doux</h2>
+                        <p className="text-text-muted text-lg font-light leading-relaxed mb-8">
                             Chaque EternalPlush arrive avec une carte de luxe. Écrivez votre message maintenant, nous l&apos;imprimerons avec soin.
                         </p>
 
@@ -59,10 +59,10 @@ export default function GiftNotePreview() {
                             value={note}
                             onChange={handleInput}
                             placeholder="Écrivez votre message ici... (Pour mon amour...)"
-                            className="w-full h-40 bg-white/5 border border-white/20 backdrop-blur-xl rounded-2xl p-6 text-white text-xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none placeholder:text-white/20 shadow-inner"
+                            className="w-full h-40 bg-white border border-gray-200 backdrop-blur-xl rounded-2xl p-6 text-text-main text-xl focus:outline-none focus:border-primary/50 focus:bg-white transition-all resize-none placeholder:text-gray-400 shadow-inner"
                             maxLength={150}
                         />
-                        <div className="flex justify-between text-sm text-white/30 mt-2">
+                        <div className="flex justify-between text-sm text-text-muted mt-2">
                             <span>Vos mots restent, le papier s&apos;envole.</span>
                             <span>{note.length}/150</span>
                         </div>
@@ -75,7 +75,7 @@ export default function GiftNotePreview() {
                         initial={{ opacity: 0, rotate: 5, scale: 0.9 }}
                         whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
                         viewport={{ once: true }}
-                        className="relative bg-[#f8f6f6] text-background-dark p-12 rounded-xl shadow-2xl aspect-[4/3] flex flex-col items-center justify-center text-center rotate-2 hover:rotate-0 transition-transform duration-500"
+                        className="relative bg-white text-text-main p-12 rounded-xl shadow-2xl aspect-[4/3] flex flex-col items-center justify-center text-center rotate-2 hover:rotate-0 transition-transform duration-500 border border-gray-100"
                     >
                         {/* Decoration */}
                         <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-primary/20 rounded-tl-xl" />

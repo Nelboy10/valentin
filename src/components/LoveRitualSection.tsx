@@ -47,18 +47,18 @@ export default function LoveRitualSection() {
     }, [charging, completed]);
 
     return (
-        <section className="py-32 px-6 bg-black relative overflow-hidden flex flex-col items-center justify-center min-h-[80vh]">
+        <section className="py-32 px-6 bg-white relative overflow-hidden flex flex-col items-center justify-center min-h-[80vh]">
             {/* Background Atmosphere */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
-            <div className={`absolute inset-0 bg-primary/20 blur-[150px] transition-opacity duration-1000 ${charging ? 'opacity-100' : 'opacity-0'}`} />
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5" />
+            <div className={`absolute inset-0 bg-primary/5 blur-[150px] transition-opacity duration-1000 ${charging ? 'opacity-100' : 'opacity-0'}`} />
 
             <div className="relative z-10 text-center space-y-12 max-w-2xl">
                 <motion.div
                     animate={{ scale: charging ? 1.05 : 1 }}
                     className="space-y-4"
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold text-white">Le Rituel</h2>
-                    <p className="text-white/60 text-xl font-light">
+                    <h2 className="text-4xl md:text-6xl font-bold text-text-main">Le Rituel</h2>
+                    <p className="text-text-muted text-xl font-light">
                         Avant de commander, transférez votre intention.<br />
                         <span className="text-primary font-bold">Maintenez le cœur</span> pour charger le cadeau.
                     </p>
@@ -67,7 +67,7 @@ export default function LoveRitualSection() {
                 {/* The Vessel */}
                 <div className="relative w-64 h-64 mx-auto">
                     {/* Outter Ring */}
-                    <div className="absolute inset-0 rounded-full border border-white/10" />
+                    <div className="absolute inset-0 rounded-full border border-gray-200" />
 
                     {/* Shake Effect Wrapper */}
                     <motion.div
@@ -85,13 +85,13 @@ export default function LoveRitualSection() {
                             disabled={completed}
                             className={`
                             relative z-20 w-32 h-32 rounded-full flex items-center justify-center transition-all duration-300
-                            ${completed ? 'scale-110 bg-primary shadow-[0_0_50px_#ee2b4b]' : 'bg-white/5 border border-white/20 hover:scale-105 active:scale-95'}
+                            ${completed ? 'scale-110 bg-primary shadow-[0_0_50px_#ee2b4b]' : 'bg-gray-50 border border-gray-200 hover:scale-105 active:scale-95'}
                         `}
                         >
                             {completed ? (
                                 <Heart className="w-12 h-12 text-white fill-white animate-pulse" />
                             ) : (
-                                <Fingerprint className={`w-12 h-12 transition-colors ${charging ? 'text-primary' : 'text-white/50'}`} />
+                                <Fingerprint className={`w-12 h-12 transition-colors ${charging ? 'text-primary' : 'text-gray-400'}`} />
                             )}
                         </button>
 
@@ -99,9 +99,9 @@ export default function LoveRitualSection() {
                         <svg className="absolute inset-0 w-full h-full rotate-[-90deg] pointer-events-none">
                             <circle
                                 cx="128" cy="128" r="120"
-                                stroke="white" strokeWidth="2"
+                                stroke="#f5f5f5" strokeWidth="2"
                                 fill="transparent"
-                                strokeOpacity={0.1}
+                                strokeOpacity={1}
                             />
                             <motion.circle
                                 cx="128" cy="128" r="120"
@@ -134,7 +134,7 @@ export default function LoveRitualSection() {
                             Amour Transféré
                         </motion.span>
                     ) : (
-                        <span className="text-white/30 text-sm">{Math.round(progress)}% INTENTION</span>
+                        <span className="text-text-muted text-sm">{Math.round(progress)}% INTENTION</span>
                     )}
                 </div>
             </div>

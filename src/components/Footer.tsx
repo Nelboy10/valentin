@@ -4,33 +4,26 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="bg-[#100b0c] text-white/60 py-20 border-t border-white/5 font-light text-sm">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div className="col-span-1 md:col-span-2">
-                    <span className="text-2xl text-white font-serif font-bold tracking-tight block mb-6">EternalPlush</span>
-                    <p className="max-w-sm mb-8 leading-relaxed">
-                        Créateur d'émotions durables. Nous transformons la douceur en un langage universel d'amour.
-                    </p>
-                    <p className="opacity-40">© 2026 EternalPlush. All rights reserved.</p>
+        <footer className="bg-primary text-white py-24 text-center">
+            <div className="max-w-4xl mx-auto px-6">
+                <span className="text-7xl mb-6 block">✨</span>
+                <h2 className="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight">Rendez Cette Saint-Valentin <br />Inoubliable</h2>
+                <div className="flex flex-col items-center gap-6">
+                    <button className="min-w-[300px] h-16 bg-white text-primary rounded-full text-xl font-bold shadow-2xl hover:bg-background-light hover:scale-105 transition-all">
+                        Commander pour le 14 Fév
+                    </button>
+                    <p className="text-white/80 font-medium">Série Limitée. Fait main avec passion.</p>
                 </div>
-
-                <div>
-                    <h4 className="text-white font-medium mb-6">Navigation</h4>
-                    <ul className="space-y-4">
-                        <li><Link href="#" className="hover:text-primary transition-colors">Accueil</Link></li>
-                        <li><Link href="#" className="hover:text-primary transition-colors">Notre Histoire</Link></li>
-                        <li><Link href="#" className="hover:text-primary transition-colors">Collection</Link></li>
-                        <li><Link href="#" className="hover:text-primary transition-colors">Contact</Link></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 className="text-white font-medium mb-6">Légal</h4>
-                    <ul className="space-y-4">
-                        <li><Link href="#" className="hover:text-primary transition-colors">CGV</Link></li>
-                        <li><Link href="#" className="hover:text-primary transition-colors">Confidentialité</Link></li>
-                        <li><Link href="#" className="hover:text-primary transition-colors">Mentions Légales</Link></li>
-                    </ul>
+                <div className="mt-20 pt-10 border-t border-white/20 flex flex-col md:flex-row justify-between items-center gap-6 text-sm opacity-70">
+                    <div className="flex items-center gap-2">
+                        <span>❤️</span>
+                        <span>© 2026 EternalPlush. Tous droits réservés.</span>
+                    </div>
+                    <div className="flex gap-8">
+                        <Link className="hover:text-white transition-colors" href="#">Confidentialité</Link>
+                        <Link className="hover:text-white transition-colors" href="#">CGV</Link>
+                        <Link className="hover:text-white transition-colors" href="#">Livraison</Link>
+                    </div>
                 </div>
             </div>
         </footer>

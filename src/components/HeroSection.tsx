@@ -1,6 +1,7 @@
 'use client';
 
 import { triggerHeartExplosion } from '@/utils/confetti';
+import { motion } from 'framer-motion';
 import MagneticWrapper from '@/components/MagneticWrapper';
 import ThreeConstellation from '@/components/ThreeConstellation';
 import SpotlightReveal from '@/components/SpotlightReveal';
@@ -14,53 +15,64 @@ export default function HeroSection() {
         <section className="relative min-h-[100dvh] flex items-center justify-center px-6 overflow-hidden pt-32 md:pt-40 pb-20">
             {/* Background - Interactive */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/80 to-background-dark z-10 pointer-events-none"></div>
+                {/* Removed white gradient overlay to show global red gradient */}
+                <div className="absolute -inset-4 bg-primary/10 rounded-xl blur-3xl opacity-50"></div>
                 <ThreeConstellation />
-                <SpotlightReveal text="Pour toujours dans mon cœur..." className="z-0" />
             </div>
 
-            <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-8 md:gap-4 items-center">
+
                 {/* Text Content */}
-                <div className="text-center md:text-left order-2 md:order-1">
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white mb-6 md:mb-8 leading-[1.1]">
-                        <span className="block text-white/90">Le témoin de</span>
-                        <span className="block">vos plus beaux</span>
-                        <span className="font-serif italic text-primary mt-2 block">&quot;Je t&apos;aime&quot;</span>
-                    </h1>
+                {/* Text Content */}
+                {/* Text Content */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }}
+                    className="order-2 md:order-1 flex flex-col justify-center text-center md:text-left"
+                >
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                        className="flex flex-col gap-4 mb-8"
+                    >
+                        <span className="text-primary font-bold tracking-widest uppercase text-xs md:text-sm">Édition Signature • Série Limitée</span>
+                        <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight text-text-main">
+                            Plus Qu'un Cadeau, <br /> Une Preuve <span className="text-secondary">d'Amour</span>
+                        </h1>
+                        <p className="text-lg opacity-80 max-w-lg leading-relaxed text-text-muted mx-auto md:mx-0">
+                            Offrez l'éternité dans un regard. Une pièce unique, conçue pour immortaliser vos sentiments et faire battre son cœur.
+                        </p>
+                    </motion.div>
 
-                    <p className="text-lg md:text-xl text-text-muted font-light mb-10 max-w-xl mx-auto md:mx-0 leading-relaxed">
-                        Plus qu&apos;une peluche, une promesse. <br />
-                        Un chef-d&apos;œuvre de douceur conçu pour traverser le temps et sceller votre affection.
-                    </p>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
+                        className="flex flex-col sm:flex-row gap-4 mb-8 justify-center md:justify-start"
+                    >
+                        <button
+                            onClick={triggerHeartExplosion}
+                            className="flex-1 lg:flex-none min-w-[240px] h-16 rounded-full bg-secondary text-white text-lg font-bold shadow-xl shadow-secondary/30 hover:bg-red-600 transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95"
+                        >
+                            <span>Lui Offrir l'Exception</span>
+                        </button>
+                    </motion.div>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6">
-                        <MagneticWrapper>
-                            <button
-                                onClick={triggerHeartExplosion}
-                                onMouseEnter={() => playHover()}
-                                className="relative group bg-primary text-white px-10 py-5 rounded-full text-lg font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(238,43,75,0.3)] hover:shadow-[0_0_60px_rgba(238,43,75,0.5)]"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:animate-shine" />
-                                <span className="relative z-10 flex items-center gap-2">
-                                    Offrir l'Exception
-                                </span>
-                            </button>
-                        </MagneticWrapper>
-
-                        <MagneticWrapper>
-                            <button
-                                onMouseEnter={() => playHover()}
-                                className="group text-white/90 border border-white/10 px-10 py-5 rounded-full text-lg font-medium hover:bg-white/5 transition-all flex items-center gap-2 backdrop-blur-sm"
-                            >
-                                <span>Découvrir l&apos;histoire</span>
-                                <span className="block transition-transform group-hover:translate-x-1">→</span>
-                            </button>
-                        </MagneticWrapper>
-                    </div>
-                </div>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8, duration: 1 }}
+                        className="flex items-center justify-center md:justify-start gap-4 text-sm font-medium opacity-70 text-text-muted"
+                    >
+                        <span className="flex items-center gap-1 text-green-600">● Stock Limité</span>
+                        <span className="flex items-center gap-1 text-green-600">● Expédition Prioritaire</span>
+                    </motion.div>
+                </motion.div>
 
                 {/* Hero Image */}
-                <div className="order-1 md:order-2 flex justify-center md:justify-end">
+                <div className="order-1 md:order-2 flex justify-center md:justify-end relative translate-x-4 md:translate-x-0">
                     <HeroMainImage />
                 </div>
             </div>

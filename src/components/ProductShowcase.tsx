@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
+import SectionDivider from '@/components/SectionDivider';
 
 const features = [
     {
@@ -26,71 +27,89 @@ const features = [
 ];
 
 export default function ProductShowcase() {
-    const targetRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: targetRef,
-    });
-
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
-
     return (
-        <section ref={targetRef} className="relative h-[300vh] bg-background-dark">
-            <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-                <div className="absolute top-10 left-10 z-10">
-                    <span className="text-secondary/50 uppercase tracking-widest text-sm font-semibold">L'Excellence</span>
+        <section className="py-20 px-6" id="details">
+            <SectionDivider position="top" fill="transparent" />
+            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                {/* Image Side with Floating Labels */}
+                <div className="relative">
+                    <div className="relative rounded-[2rem] overflow-hidden shadow-2xl group border border-primary/5 hover:border-primary/20 transition-all duration-500">
+                        <Image
+                            src="/tedybear.jpg"
+                            alt="Close up of high quality plush fabric"
+                            width={600}
+                            height={600}
+                            className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                    </div>
+
+                    {/* Floating Label 1 */}
+                    {/* Floating Label 1 */}
+                    {/* Floating Label 1 */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8, x: -30 }}
+                        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                        viewport={{ margin: "-50px" }}
+                        transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
+                        className="absolute top-10 left-0 md:top-1/4 md:-left-10 bg-white/95 backdrop-blur-md p-3 md:p-4 rounded-xl shadow-[0_8px_30px_-5px_rgba(0,0,0,0.1)] border-l-4 border-primary z-20 max-w-[160px] md:max-w-none hover:scale-105 transition-transform"
+                    >
+                        <p className="text-xs md:text-sm font-bold text-gray-900">Toucher "Nuage de Soie"</p>
+                        <p className="text-[10px] md:text-xs opacity-80 text-gray-600 uppercase tracking-wider">Douceur Inégalée</p>
+                    </motion.div>
+
+                    {/* Floating Label 2 */}
+                    {/* Floating Label 2 */}
+                    {/* Floating Label 2 */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8, x: 30 }}
+                        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                        viewport={{ margin: "-50px" }}
+                        transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.4 }}
+                        className="absolute bottom-10 right-0 md:bottom-1/4 md:-right-10 bg-white/95 backdrop-blur-md p-3 md:p-4 rounded-xl shadow-[0_8px_30px_-5px_rgba(0,0,0,0.1)] border-l-4 border-accent z-20 max-w-[160px] md:max-w-none hover:scale-105 transition-transform"
+                    >
+                        <p className="text-xs md:text-sm font-bold text-gray-900">Finitions Haute Couture</p>
+                        <p className="text-[10px] md:text-xs opacity-80 text-gray-600 uppercase tracking-wider">Héritage Artisanal</p>
+                    </motion.div>
                 </div>
 
-                <motion.div style={{ x }} className="flex gap-12 md:gap-24 pl-10 md:pl-24 pr-24 items-center">
-                    {/* Intro Title */}
-                    <div className="shrink-0 w-[80vw] md:w-[400px]">
-                        <h2 className="text-5xl md:text-8xl font-serif text-white font-medium leading-tight">
-                            L'Art du <br />
-                            <span className="text-white/20">Détail_</span>
-                        </h2>
-                        <p className="mt-8 text-white/60 text-lg md:text-xl max-w-sm">
-                            Chaque millimètre a été pensé pour offrir une expérience sensorielle inoubliable.
-                        </p>
-                    </div>
+                {/* Content Side */}
+                <div className="flex flex-col gap-8">
+                    <h2 className="text-4xl md:text-5xl font-bold leading-tight text-text-main">
+                        Une Œuvre d'Art <br />
+                        <span className="text-primary">À Câliner</span>
+                    </h2>
+                    <p className="text-lg text-text-muted leading-relaxed">
+                        Chaque ValenPlush est une pièce unique, née entre les mains d'artisans passionnés. Nous avons banni le synthétique rugueux pour ne garder que la caresse d'un velours hypoallergénique, aussi pur que vos sentiments.
+                    </p>
 
-                    {features.map((feature) => (
-                        <div
-                            key={feature.id}
-                            className="group relative h-[60vh] w-[85vw] md:w-[500px] shrink-0 overflow-hidden rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:scale-[1.02]"
-                        >
-                            <div className="absolute inset-0 z-0">
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-90" />
-                                <Image
-                                    src="/tedybear.jpg"
-                                    alt={feature.title}
-                                    fill
-                                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                                    style={{
-                                        objectPosition: feature.bgPosition
-                                    }}
-                                />
-                            </div>
-
-                            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <span className="inline-block px-3 py-1 rounded-full border border-white/20 text-xs text-white/80 mb-4 backdrop-blur-md">
-                                    0{feature.id}
+                    <ul className="flex flex-col gap-4">
+                        {[
+                            "Textile Certifié Oeko-Tex® (Respect de la peau)",
+                            "Coutures Invisibles Ultra-Résistantes",
+                            "Un Compagnon pour la Vie"
+                        ].map((item, i) => (
+                            <motion.li
+                                key={i}
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3 + (i * 0.1) }}
+                                className="flex items-center gap-3 text-text-main font-medium"
+                            >
+                                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-600">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                                 </span>
-                                <h3 className="text-3xl md:text-4xl font-serif text-white mb-4">{feature.title}</h3>
-                                <div className="h-[1px] w-10 bg-primary mb-4 transition-all duration-500 group-hover:w-full" />
-                                <p className="text-lg text-white/70 font-light leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                                    {feature.description}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
+                                {item}
+                            </motion.li>
+                        ))}
+                    </ul>
 
-                    {/* Outro Text */}
-                    <div className="shrink-0 w-[50vw] md:w-[400px] flex items-center justify-center">
-                        <span className="text-2xl md:text-4xl font-serif italic text-white/30 text-center">
-                            "Plus qu'un objet,<br />un héritage."
-                        </span>
+                    <div className="mt-4">
+                        <button className="text-primary font-bold border-b-2 border-primary/20 hover:border-primary transition-colors pb-1">
+                            Découvrir le Secret de Fabrication
+                        </button>
                     </div>
-
-                </motion.div>
+                </div>
             </div>
         </section>
     );

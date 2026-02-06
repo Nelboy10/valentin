@@ -64,7 +64,8 @@ export default function FloatingParticles() {
                 // Draw Particle
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${0.1 + (p.size / 5)})`;
+                // MANDATORY: Use Primary Red for particles on white background
+                ctx.fillStyle = `rgba(255, 0, 0, ${0.1 + (p.size / 5)})`;
                 ctx.fill();
 
                 // Connections
@@ -76,7 +77,8 @@ export default function FloatingParticles() {
 
                     if (dist < connectionDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - dist / connectionDistance)})`;
+                        // Connections in soft pink/red
+                        ctx.strokeStyle = `rgba(220, 20, 60, ${0.15 * (1 - dist / connectionDistance)})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
@@ -91,7 +93,7 @@ export default function FloatingParticles() {
 
                 if (mdist < mouseDistance) {
                     ctx.beginPath();
-                    ctx.strokeStyle = `rgba(238, 43, 75, ${0.4 * (1 - mdist / mouseDistance)})`; // Primary color link
+                    ctx.strokeStyle = `rgba(255, 20, 147, ${0.4 * (1 - mdist / mouseDistance)})`; // Secondary Pink link
                     ctx.lineWidth = 1.5;
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(mouse.x, mouse.y);

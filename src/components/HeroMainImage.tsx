@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
+import { Heart } from 'lucide-react';
 
 export default function HeroMainImage() {
     const ref = useRef<HTMLDivElement>(null);
@@ -25,58 +26,81 @@ export default function HeroMainImage() {
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="relative w-full max-w-[500px] aspect-[4/5] mx-auto z-20 perspective-1000 mt-12 md:mt-0"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="relative w-full max-w-[600px] aspect-square mx-auto z-20 perspective-1000 mt-8 md:mt-0 flex items-center justify-center"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            {/* Glow backing - Moves opposite to image for depth */}
+            {/* Living Glow Experience - Heartbeat synced */}
             <motion.div
                 animate={{
-                    x: mousePosition.x * -2,
-                    y: mousePosition.y * -2,
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.5, 0.3],
                 }}
-                transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                className="absolute inset-8 bg-primary/30 blur-[60px] rounded-full z-0 opacity-80"
+                transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                className="absolute inset-0 bg-primary/30 blur-[100px] rounded-full z-0 pointer-events-none"
             />
 
-            {/* Gold Accent Ring - Decorative */}
-            <motion.div
-                animate={{
-                    x: mousePosition.x * -0.5,
-                    y: mousePosition.y * -0.5,
-                    rotate: 5
-                }}
-                className="absolute -inset-4 border border-secondary/30 rounded-[2.5rem] z-0 blur-[1px]"
-            />
+            {/* Secondary warm glow */}
+            <div className="absolute inset-10 bg-secondary/10 blur-[80px] rounded-full z-0 pointer-events-none" />
 
-            {/* Main Image Container */}
+            {/* Floating Hearts Particles - Valentine Concept */}
+            {[...Array(5)].map((_, i) => (
+                <motion.div
+                    key={i}
+                    animate={{
+                        y: [-20, -100],
+                        x: Math.sin(i) * 30,
+                        opacity: [0, 1, 0],
+                        scale: [0.5, 1, 0.5]
+                    }}
+                    transition={{
+                        duration: 3 + i,
+                        repeat: Infinity,
+                        delay: i * 0.8,
+                        ease: "easeOut"
+                    }}
+                    className="absolute z-0 text-primary/30"
+                    style={{
+                        left: `${40 + (i % 3) * 20}%`,
+                        top: '60%'
+                    }}
+                >
+                    <Heart className="w-8 h-8 fill-current" />
+                </motion.div>
+            ))}
+
+            {/* Main Image Container - No Borders, Just Plush */}
             <motion.div
                 animate={{
                     x: mousePosition.x,
                     y: mousePosition.y,
                     rotateX: mousePosition.y * 0.1,
                     rotateY: mousePosition.x * -0.1,
+                    scale: [1, 1.02, 1] // Subtle breath/heartbeat
                 }}
-                transition={{ type: "spring", stiffness: 150, damping: 15 }}
-                className="relative z-10 w-full h-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-white/5 backdrop-blur-sm group"
+                transition={{
+                    x: { type: "spring", stiffness: 150, damping: 15 },
+                    y: { type: "spring", stiffness: 150, damping: 15 },
+                    scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="relative z-10 w-full h-full flex items-center justify-center group"
             >
-                {/* Overlay shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent z-20 pointer-events-none mix-blend-soft-light" />
-
                 <Image
                     src="/tedybear.png"
                     alt="L'Ours EternalPlush"
-                    fill
-                    className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+                    width={550}
+                    height={700}
+                    className="object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105"
                     priority
                     draggable={false}
                 />
-
-                {/* Premium Vignette */}
-                <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/40 z-10 pointer-events-none" />
             </motion.div>
         </motion.div>
     );

@@ -6,6 +6,8 @@ import { BadgeCheck, ScrollText } from 'lucide-react';
 import { useRef } from 'react';
 import TiltWrapper from '@/components/TiltWrapper';
 
+import SectionDivider from '@/components/SectionDivider';
+
 export default function StorySection() {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -18,7 +20,8 @@ export default function StorySection() {
     const listY = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"]);
 
     return (
-        <section ref={ref} className="py-32 px-6 bg-background-dark relative z-10">
+        <section ref={ref} className="py-32 px-6 relative z-10 overflow-hidden">
+            <SectionDivider position="bottom" fill="transparent" variant="wave" /> {/* Transition to Primary Color Section (PriceOffer) */}
             <div className="max-w-[1200px] mx-auto text-center space-y-20">
 
                 <div className="space-y-6">
@@ -28,9 +31,9 @@ export default function StorySection() {
                         transition={{ duration: 1 }}
                         className="text-primary text-sm font-bold uppercase block"
                     >
-                        L&apos;Essence
+                        Bénéfices
                     </motion.span>
-                    <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tight">Douceur infinie</h2>
+                    <h2 className="text-3xl md:text-7xl font-bold text-text-main tracking-tight">Valeur Émotionnelle</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -59,7 +62,7 @@ export default function StorySection() {
                             />
                         ))}
                         {/* Magical Glow Behind */}
-                        <div className="absolute inset-4 bg-primary/40 blur-[50px] rounded-full z-0 animate-pulse" />
+                        <div className="absolute inset-4 bg-primary/20 blur-[50px] rounded-full z-0 animate-pulse pointer-events-none" />
 
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -73,7 +76,7 @@ export default function StorySection() {
                                     ease: "easeInOut"
                                 }
                             }}
-                            className="w-full h-full rounded-[2rem] overflow-hidden bg-white/5 border border-white/20 relative z-10 shadow-2xl backdrop-blur-sm"
+                            className="w-full h-full rounded-[2rem] overflow-hidden bg-white hover:shadow-[0_20px_50px_-10px_rgba(255,20,147,0.3)] border border-rose-100 relative z-10 shadow-2xl transition-shadow duration-500"
                         >
                             <motion.div
                                 style={{ y: imgY, scale: 1.1 }}
@@ -97,16 +100,16 @@ export default function StorySection() {
                                 initial={{ opacity: 0, x: 50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="text-3xl md:text-5xl font-light text-white/90"
+                                className="text-3xl md:text-5xl font-light text-text-main"
                             >
-                                Présence <br /><span className="font-bold text-white">Rassurante</span>
+                                Présence <br /><span className="font-bold text-primary">Rassurante</span>
                             </motion.h3>
                             <motion.p
                                 initial={{ opacity: 0, x: 50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-xl text-white/50 leading-relaxed font-light mt-8"
+                                className="text-xl text-text-muted leading-relaxed font-light mt-8"
                             >
                                 Plus qu&apos;un simple objet, c&apos;est une promesse de réconfort nocturne et un ancrage émotionnel permanent dans votre foyer.
                             </motion.p>
@@ -123,9 +126,9 @@ export default function StorySection() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.4 + (i * 0.1) }}
-                                    className="flex items-center gap-4 text-white/80 p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5"
+                                    className="flex items-center gap-4 text-text-main p-4 rounded-xl hover:bg-white/50 transition-colors border border-transparent hover:border-rose-100"
                                 >
-                                    <div className="p-2 rounded-full bg-primary/20 text-primary">
+                                    <div className="p-2 rounded-full bg-primary/10 text-primary">
                                         <item.icon className="w-5 h-5" />
                                     </div>
                                     <span className="text-lg">{item.text}</span>
@@ -136,7 +139,7 @@ export default function StorySection() {
                 </div>
             </div>
             {/* Smooth transition to next section */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1f1618] to-transparent pointer-events-none" />
+            {/* Removed white gradient fade */}
         </section>
     );
 }

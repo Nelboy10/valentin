@@ -1,13 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #ee2b4b;
-  --color-secondary: #f4a261;
-  /* Gold/Rose Gold accent */
-  --color-background-light: #f8f6f6;
-  --color-background-dark: #181112;
-  --color-text-main: #fcfcfc;
-  --color-text-muted: #dcdcdc;
+  /* REFERENCE HTML PALETTE */
+  --color-primary: #ff1492;
+  /* Rose Valentin */
+  --color-secondary: #FF0000;
+  /* Heart Red / Rouge Vif */
+  --color-accent: #FF69B4;
+  /* Hot Pink */
+
+  --color-background-light: #f8f5f7;
+  /* Main Background */
+  --color-background-dark: #230f1a;
+  /* Dark Text / Footer */
+
+  /* Text Colors */
+  --color-text-main: #1d0c15;
+  /* Dark almost black */
+  --color-text-muted: #5e4a52;
+  /* Muted variation */
 
   --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-serif: 'Playfair Display', serif;
@@ -41,8 +52,8 @@
 }
 
 :root {
-  --background: var(--color-background-dark);
-  --foreground: #ffffff;
+  --background: var(--color-background-light);
+  --foreground: var(--color-text-main);
 }
 
 body {
@@ -50,6 +61,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-display);
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Filmic Noise Overlay */

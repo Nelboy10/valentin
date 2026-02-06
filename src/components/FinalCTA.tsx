@@ -7,9 +7,9 @@ import MagneticWrapper from '@/components/MagneticWrapper';
 
 export default function FinalCTA() {
     return (
-        <section className="py-32 px-6 bg-background-dark text-center relative overflow-hidden">
+        <section className="py-32 px-6 text-center relative overflow-hidden">
             {/* Background Pulse */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 blur-[100px] rounded-full animate-pulse" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/20 blur-[100px] rounded-full animate-pulse" />
 
             <div className="max-w-4xl mx-auto space-y-16 relative z-10">
                 <motion.div
@@ -18,11 +18,11 @@ export default function FinalCTA() {
                     viewport={{ once: true }}
                     className="space-y-6"
                 >
-                    <h2 className="text-5xl md:text-8xl font-extrabold text-white tracking-tighter leading-none">
+                    <h2 className="text-5xl md:text-8xl font-extrabold text-text-main tracking-tighter leading-none">
                         Marquez son cœur <br />
                         <span className="text-primary">pour toujours</span>
                     </h2>
-                    <p className="text-xl md:text-2xl text-white/50 font-light max-w-2xl mx-auto">
+                    <p className="text-xl md:text-2xl text-text-muted font-light max-w-2xl mx-auto">
                         Ne laissez pas passer l&apos;occasion d&apos;offrir plus qu&apos;un objet : offrez une émotion durable.
                     </p>
                 </motion.div>
@@ -33,13 +33,13 @@ export default function FinalCTA() {
                             onClick={triggerHeartExplosion}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="group relative inline-flex items-center justify-center px-12 py-8 font-bold text-white transition-all bg-primary rounded-full hover:shadow-[0_0_80px_rgba(238,43,75,0.4)] overflow-hidden"
+                            className="group relative inline-flex items-center justify-center px-12 py-8 font-bold text-primary transition-all bg-white rounded-full hover:shadow-[0_0_80px_rgba(255,255,255,0.4)] overflow-hidden"
                         >
                             <span className="relative z-10 text-2xl tracking-tight mr-2">Commander mon EternalPlush</span>
                             <ArrowRight className="relative z-10 w-6 h-6 transition-transform group-hover:translate-x-2" />
 
                             {/* Hover Glare */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:animate-shine" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-100/30 to-transparent translate-x-[-100%] group-hover:animate-shine" />
                         </motion.button>
                     </MagneticWrapper>
 
@@ -48,7 +48,7 @@ export default function FinalCTA() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.5 }}
-                        className="text-white/30 text-sm flex items-center justify-center gap-2 uppercase tracking-widest font-medium"
+                        className="text-text-muted text-sm flex items-center justify-center gap-2 uppercase tracking-widest font-medium"
                     >
                         <Truck className="w-4 h-4" />
                         Livraison express offerte

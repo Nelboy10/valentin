@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import CustomCursor from "@/components/CustomCursor";
@@ -8,20 +7,8 @@ import DynamicTitle from "@/components/DynamicTitle";
 import SoundManager from "@/components/SoundManager";
 import GsapRegistry from "@/components/GsapRegistry";
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
 export const metadata: Metadata = {
-  title: "EternalPlush - Saint-Valentin",
+  title: "Valentine's Plush - The Perfect Gift",
   description: "Le témoin de vos plus beaux 'Je t'aime'.",
 };
 
@@ -31,8 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="dark scroll-smooth">
-      <body className={`${jakarta.variable} ${playfair.variable} antialiased bg-background-light dark:bg-background-dark text-white cursor-none`}>
+    <html lang="fr" className="light scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      </head>
+      <body className={`font-display antialiased text-text-main cursor-none`}>
         <div className="bg-noise" />
         <DynamicTitle />
         <CustomCursor />
