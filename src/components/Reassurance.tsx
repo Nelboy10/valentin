@@ -6,23 +6,23 @@ export default function Reassurance() {
     const items = [
         {
             icon: Truck,
-            title: "Livraison Express",
-            desc: "Garantie avant le 14 Février pour toute commande avant le 10."
+            title: "Livraison 48H Offerte",
+            desc: "Commandez aujourd'hui, recevez-le à temps pour la Saint-Valentin."
         },
         {
             icon: ShieldCheck,
-            title: "Paiement Sécurisé",
-            desc: "Transactions chiffrées SSL. Vos données sont protégées."
+            title: "Paiement 100% Sécurisé",
+            desc: "Vos données sont protégées par un chiffrement SSL bancaire."
         },
         {
             icon: HeartHandshake,
-            title: "Satisfait ou Remboursé",
-            desc: "30 jours pour changer d'avis. Retour gratuit."
+            title: "Garantie 'Coup de Foudre'",
+            desc: "30 jours pour changer d'avis. Retour gratuit sans question."
         },
         {
             icon: Clock,
-            title: "Service Client 24/7",
-            desc: "Une question ? Notre équipe passionnée vous répond."
+            title: "Support Dédié 24/7",
+            desc: "Une équipe passionnée à votre écoute à tout moment."
         }
     ];
 

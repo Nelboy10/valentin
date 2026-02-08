@@ -7,7 +7,7 @@ export default function Footer() {
         <footer className="bg-primary text-white py-24 text-center">
             <div className="max-w-4xl mx-auto px-6">
                 <span className="text-7xl mb-6 block">✨</span>
-                <h2 className="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight">Rendez Cette Saint-Valentin <br />Inoubliable</h2>
+                <h2 className="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight">Rendez Cette Saint-Valentin <br /><span className="font-chrisdia text-6xl md:text-8xl mt-4 block">Inoubliable</span></h2>
                 <div className="flex flex-col items-center gap-6">
                     <button className="min-w-[300px] h-16 bg-white text-primary rounded-full text-xl font-bold shadow-2xl hover:bg-background-light hover:scale-105 transition-all">
                         Commander pour le 14 Fév

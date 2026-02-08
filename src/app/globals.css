@@ -20,8 +20,10 @@
   --color-text-muted: #5e4a52;
   /* Muted variation */
 
+  /* Typography */
   --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-serif: 'Playfair Display', serif;
+  --font-chrisdia: 'Great Vibes', cursive;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-shine: shine 3s linear infinite;
@@ -62,6 +64,23 @@ body {
   font-family: var(--font-display);
   overflow-x: hidden;
   min-height: 100vh;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.font-chrisdia {
+  font-family: var(--font-chrisdia);
+  font-weight: 400;
 }
 
 /* Filmic Noise Overlay */
@@ -80,4 +99,8 @@ body {
 ::selection {
   background: rgba(238, 43, 75, 0.4);
   color: white;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
 }

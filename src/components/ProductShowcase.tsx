@@ -1,9 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useEffect } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import SectionDivider from '@/components/SectionDivider';
+import { usePlushAnimation } from '@/context/PlushAnimationContext';
 
 const features = [
     {
@@ -27,49 +28,75 @@ const features = [
 ];
 
 export default function ProductShowcase() {
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef, { margin: "-30% 0px -30% 0px", amount: 0.3 });
+    const { stage, setStage } = usePlushAnimation();
+
+    useEffect(() => {
+        if (isInView) {
+            setStage('showcase');
+        } else {
+            setStage('hero');
+        }
+    }, [isInView, setStage]);
+
     return (
-        <section className="py-20 px-6" id="details">
+        <section className="py-20 px-6 relative z-50" id="details" ref={containerRef}>
             <SectionDivider position="top" fill="transparent" />
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 {/* Image Side with Floating Labels */}
-                <div className="relative">
-                    <div className="relative rounded-[2rem] overflow-hidden shadow-2xl group border border-primary/5 hover:border-primary/20 transition-all duration-500">
-                        <Image
-                            src="/tedybear.jpg"
-                            alt="Close up of high quality plush fabric"
-                            width={600}
-                            height={600}
-                            className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                <div className="relative h-[600px] w-full flex items-center justify-center">
+                    <div className="relative w-full h-full flex items-center justify-center">
+                        {/* Placeholder Background */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-[2rem] pointer-events-none border border-primary/5" />
+
+                        {/* The Arriving Plush - Cinematic Transition */}
+                        <AnimatePresence mode="popLayout">
+                            {stage === 'showcase' && (
+                                <motion.div
+                                    layoutId="cinematic-plush"
+                                    className="relative z-[9999] w-auto h-auto max-w-full max-h-full"
+                                    transition={{
+                                        layout: { type: "spring", stiffness: 100, damping: 20, duration: 1.5 }
+                                    }}
+                                >
+                                    <Image
+                                        src="/tedybear.png"
+                                        alt="Close up of high quality plush fabric"
+                                        width={500}
+                                        height={600}
+                                        className="w-full h-auto object-contain drop-shadow-2xl"
+                                        priority
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
 
-                    {/* Floating Label 1 */}
-                    {/* Floating Label 1 */}
                     {/* Floating Label 1 */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, x: -30 }}
                         whileInView={{ opacity: 1, scale: 1, x: 0 }}
                         viewport={{ margin: "-50px" }}
                         transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
-                        className="absolute top-10 left-0 md:top-1/4 md:-left-10 bg-white/95 backdrop-blur-md p-3 md:p-4 rounded-xl shadow-[0_8px_30px_-5px_rgba(0,0,0,0.1)] border-l-4 border-primary z-20 max-w-[160px] md:max-w-none hover:scale-105 transition-transform"
+                        className="absolute top-10 left-0 md:top-1/4 md:-left-10 bg-white/80 backdrop-blur-xl p-4 md:p-5 rounded-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] border border-white/40 z-20 max-w-[180px] md:max-w-none hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_32px_0_rgba(255,20,146,0.15)] group"
                     >
-                        <p className="text-xs md:text-sm font-bold text-gray-900">Toucher "Nuage de Soie"</p>
-                        <p className="text-[10px] md:text-xs opacity-80 text-gray-600 uppercase tracking-wider">Douceur Inégalée</p>
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent rounded-2xl opacity-50 pointer-events-none" />
+                        <p className="text-xs md:text-sm font-bold text-gray-900 group-hover:text-primary transition-colors">Toucher "Nuage de Soie"</p>
+                        <p className="text-[10px] md:text-xs opacity-80 text-gray-600 uppercase tracking-wider font-medium">Douceur Inégalée</p>
                     </motion.div>
 
-                    {/* Floating Label 2 */}
-                    {/* Floating Label 2 */}
                     {/* Floating Label 2 */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, x: 30 }}
                         whileInView={{ opacity: 1, scale: 1, x: 0 }}
                         viewport={{ margin: "-50px" }}
                         transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.4 }}
-                        className="absolute bottom-10 right-0 md:bottom-1/4 md:-right-10 bg-white/95 backdrop-blur-md p-3 md:p-4 rounded-xl shadow-[0_8px_30px_-5px_rgba(0,0,0,0.1)] border-l-4 border-accent z-20 max-w-[160px] md:max-w-none hover:scale-105 transition-transform"
+                        className="absolute bottom-10 right-0 md:bottom-1/4 md:-right-10 bg-white/80 backdrop-blur-xl p-4 md:p-5 rounded-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.1)] border border-white/40 z-20 max-w-[180px] md:max-w-none hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_32px_0_rgba(255,105,180,0.15)] group"
                     >
-                        <p className="text-xs md:text-sm font-bold text-gray-900">Finitions Haute Couture</p>
-                        <p className="text-[10px] md:text-xs opacity-80 text-gray-600 uppercase tracking-wider">Héritage Artisanal</p>
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent rounded-2xl opacity-50 pointer-events-none" />
+                        <p className="text-xs md:text-sm font-bold text-gray-900 group-hover:text-accent transition-colors">Finitions Haute Couture</p>
+                        <p className="text-[10px] md:text-xs opacity-80 text-gray-600 uppercase tracking-wider font-medium">Héritage Artisanal</p>
                     </motion.div>
                 </div>
 
@@ -84,13 +111,9 @@ export default function ProductShowcase() {
                     </p>
 
                     <ul className="flex flex-col gap-4">
-                        {[
-                            "Textile Certifié Oeko-Tex® (Respect de la peau)",
-                            "Coutures Invisibles Ultra-Résistantes",
-                            "Un Compagnon pour la Vie"
-                        ].map((item, i) => (
+                        {features.map((feature, i) => (
                             <motion.li
-                                key={i}
+                                key={feature.id}
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.3 + (i * 0.1) }}
@@ -99,7 +122,10 @@ export default function ProductShowcase() {
                                 <span className="flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-600">
                                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                                 </span>
-                                {item}
+                                <div>
+                                    <strong className="block text-gray-900">{feature.title}</strong>
+                                    <span className="text-sm opacity-80">{feature.description}</span>
+                                </div>
                             </motion.li>
                         ))}
                     </ul>

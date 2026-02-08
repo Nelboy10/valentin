@@ -35,7 +35,7 @@ export default function FinalCTA() {
                             whileTap={{ scale: 0.95 }}
                             className="group relative inline-flex items-center justify-center px-12 py-8 font-bold text-primary transition-all bg-white rounded-full hover:shadow-[0_0_80px_rgba(255,255,255,0.4)] overflow-hidden"
                         >
-                            <span className="relative z-10 text-2xl tracking-tight mr-2">Commander mon EternalPlush</span>
+                            <span className="relative z-10 text-2xl tracking-tight mr-2">Recevoir mon cadeau</span>
                             <ArrowRight className="relative z-10 w-6 h-6 transition-transform group-hover:translate-x-2" />
 
                             {/* Hover Glare */}
