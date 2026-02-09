@@ -13,7 +13,7 @@ export default function PriceOffer() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_70%)] pointer-events-none" />
 
             <div className="max-w-3xl mx-auto relative z-10 px-0 md:px-6 text-center">
-                <div className="bg-white/80 backdrop-blur-xl border-2 border-primary/10 p-8 md:p-12 rounded-3xl relative shadow-[0_20px_60px_-15px_rgba(255,20,146,0.15)] overflow-hidden">
+                <div className="bg-white/80 backdrop-blur-xl border-2 border-primary/10 p-8 md:p-12 rounded-3xl relative shadow-[0_20px_60px_-15px_rgba(255,20,146,0.15)]">
                     {/* Discount Badge */}
                     <div className="absolute top-0 right-0 bg-secondary text-white font-bold px-6 py-3 rounded-bl-3xl z-20 shadow-md">
                         -30€
@@ -39,12 +39,13 @@ export default function PriceOffer() {
 
                     <button
                         onClick={triggerHeartExplosion}
-                        className="w-full h-20 bg-gradient-to-r from-primary to-accent text-white rounded-2xl text-xl md:text-2xl font-bold shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 group relative overflow-hidden"
+                        className="w-full h-14 md:h-20 bg-gradient-to-r from-primary to-accent text-white rounded-2xl text-lg md:text-2xl font-bold shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 md:gap-3 group relative overflow-hidden"
                     >
                         {/* Button Sheen */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:animate-shine" />
-                        <ShoppingBag className="w-6 h-6 mb-1" />
-                        <span>Sécuriser Mon Exemplaire</span>
+                        <ShoppingBag className="w-5 h-5 md:w-6 md:h-6 mb-1" />
+                        <span className="block md:hidden">Commander Maintenant</span>
+                        <span className="hidden md:block">Sécuriser Mon Exemplaire</span>
                     </button>
 
                     {/* Trust Signals & Urgency */}

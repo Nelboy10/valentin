@@ -102,8 +102,7 @@ export default function LoveAtmosphere() {
             const pulse = (Math.sin(time) + 1) / 2; // 0 to 1
             const bgAlpha = 0.02 + (pulse * 0.03); // Subtle background tint pulse
 
-            ctx.fillStyle = `rgba(50, 0, 10, ${bgAlpha})`; // Very faint dark red tint
-            ctx.fillRect(0, 0, width, height);
+            // Removed dark tint pulse
 
             particles.forEach(p => {
                 p.update();

@@ -2,7 +2,7 @@
 
 import { triggerHeartExplosion } from '@/utils/confetti';
 import { motion } from 'framer-motion';
-import MagneticWrapper from '@/components/MagneticWrapper';
+
 
 import HeroMainImage from '@/components/HeroMainImage';
 import useSound from 'use-sound';
@@ -15,10 +15,8 @@ export default function HeroSection() {
 
         <section className="relative z-50 min-h-[100dvh] flex items-center justify-center px-6 pt-32 md:pt-40 pb-20">
             {/* Background - Interactive (Clipped) */}
-            <div className="absolute inset-0 z-0 overflow-hidden rounded-b-[3rem]">
-                {/* Removed white gradient overlay to show global red gradient */}
-                <div className="absolute -inset-4 bg-primary/10 rounded-xl blur-3xl opacity-50"></div>
-
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                {/* Transparent to let LoveAtmosphere show through */}
             </div>
 
             <div className="relative z-10 w-full max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-8 items-center justify-items-center">
@@ -40,11 +38,12 @@ export default function HeroSection() {
                     >
                         <button
                             onClick={triggerHeartExplosion}
-                            className="relative overflow-hidden flex-1 lg:flex-none min-w-[240px] h-16 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-lg font-bold shadow-xl shadow-secondary/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group animate-pulse-subtle"
+                            className="relative overflow-hidden w-auto min-w-[200px] h-16 px-8 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-lg font-bold shadow-xl shadow-secondary/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group animate-pulse-subtle"
                         >
                             {/* Sheen effect */}
                             <div className="absolute inset-0 -translate-x-[120%] group-hover:animate-shine bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 z-0 pointer-events-none" />
-                            <span className="relative z-10">Lui Offrir l'Exception</span>
+                            <span className="relative z-10 block md:hidden">Offrir l'Exception</span>
+                            <span className="relative z-10 hidden md:block">Lui Offrir l'Exception</span>
                         </button>
                     </motion.div>
 

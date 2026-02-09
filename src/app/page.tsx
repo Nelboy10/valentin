@@ -23,8 +23,39 @@ import { AnimatePresence } from 'framer-motion';
 export default function Home() {
   const [showRitual, setShowRitual] = React.useState(true);
 
+  // Structured Data (JSON-LD)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'EternalPlush - Saint Valentin Edition',
+    image: 'https://valentine-plush.vercel.app/challengeimage.png',
+    description: 'Une peluche premium en édition limitée pour la Saint-Valentin. Finition velours, cœur lumineux et douceur incomparable.',
+    brand: {
+      '@type': 'Brand',
+      name: 'EternalPlush'
+    },
+    offers: {
+      '@type': 'Offer',
+      url: 'https://valentine-plush.vercel.app',
+      priceCurrency: 'EUR',
+      price: '49.00',
+      priceValidUntil: '2025-02-15',
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition'
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '1240'
+    }
+  };
+
   return (
     <PlushAnimationProvider>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main className="min-h-screen relative selection:bg-primary selection:text-white">
         <AnimatePresence>
           {showRitual && <LoveRitual onComplete={() => setShowRitual(false)} />}

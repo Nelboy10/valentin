@@ -8,8 +8,53 @@ import SoundManager from "@/components/SoundManager";
 import GsapRegistry from "@/components/GsapRegistry";
 
 export const metadata: Metadata = {
-  title: "Valentine's Plush - The Perfect Gift",
-  description: "Le témoin de vos plus beaux 'Je t'aime'.",
+  metadataBase: new URL('https://valentine-plush.vercel.app'), // Replace with actual domain if known, or localhost for now
+  title: {
+    default: "EternalPlush - Le Cadeau Saint-Valentin Inoubliable",
+    template: "%s | EternalPlush"
+  },
+  description: "Plus qu'une peluche, une preuve d'amour éternelle. Découvrez le cadeau ultime pour la Saint-Valentin scellé d'une promesse.",
+  keywords: ["peluche saint valentin", "cadeau couple", "ours éternel", "cadeau romantique", "peluche luxe", "valentines day gift", "teddy bear"],
+  authors: [{ name: "EternalPlush Team" }],
+  creator: "EternalPlush",
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: 'https://valentine-plush.vercel.app',
+    title: "EternalPlush - Offrez l'Éternité",
+    description: "Le cadeau qui capture vos sentiments pour toujours. Une peluche premium, une expérience inoubliable.",
+    siteName: "EternalPlush",
+    images: [
+      {
+        url: '/challengeimage.png', // Assuming this is available in public
+        width: 1200,
+        height: 630,
+        alt: "EternalPlush - L'Ours de la Saint-Valentin",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EternalPlush - Le Cadeau Ultime",
+    description: "Faites de cette Saint-Valentin un moment magique avec EternalPlush.",
+    images: ['/challengeimage.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/challengeimage.png',
+    shortcut: '/challengeimage.png',
+    apple: '/challengeimage.png',
+  },
 };
 
 export default function RootLayout({

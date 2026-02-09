@@ -15,6 +15,7 @@ export default function LoveRitual({ onComplete }: { onComplete: () => void }) {
     const [playMagic] = useSound('https://assets.mixkit.co/sfx/preview/mixkit-magical-glitter-dust-movement-2766.mp3', { volume: 0.5 });
 
     const handleEnter = () => {
+        if (isClicked) return;
         setIsClicked(true);
         playHeartbeat();
         playMagic();
@@ -29,8 +30,9 @@ export default function LoveRitual({ onComplete }: { onComplete: () => void }) {
         <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
-            className="fixed inset-0 z-[10000] bg-[#1a0510] flex flex-col items-center justify-center cursor-pointer overflow-hidden"
+            className="fixed inset-0 z-[10000] bg-[#1a0510] flex flex-col items-center justify-center cursor-pointer overflow-hidden touch-manipulation"
             onClick={handleEnter}
+            onTouchStart={handleEnter}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

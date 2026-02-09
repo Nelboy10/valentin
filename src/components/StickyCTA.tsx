@@ -32,7 +32,7 @@ export default function StickyCTA() {
                     <div className="flex items-center gap-3">
                         <div className="relative w-10 h-10 rounded-full bg-rose-50 overflow-hidden border border-rose-100 shrink-0">
                             <Image
-                                src="/tedybear.png"
+                                src="/challengeimage.png"
                                 alt="Mini Plush"
                                 width={40}
                                 height={40}
@@ -47,7 +47,7 @@ export default function StickyCTA() {
 
                     <button
                         onClick={triggerHeartExplosion}
-                        className="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg shadow-primary/30 hover:scale-105 active:scale-95 transition-all group"
+                        className="flex items-center gap-2 bg-primary text-white px-4 py-2 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-bold shadow-lg shadow-primary/30 hover:scale-105 active:scale-95 transition-all group"
                     >
                         <span>Commander</span>
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />

@@ -29,16 +29,6 @@ const features = [
 
 export default function ProductShowcase() {
     const containerRef = useRef(null);
-    const isInView = useInView(containerRef, { margin: "-30% 0px -30% 0px", amount: 0.3 });
-    const { stage, setStage } = usePlushAnimation();
-
-    useEffect(() => {
-        if (isInView) {
-            setStage('showcase');
-        } else {
-            setStage('hero');
-        }
-    }, [isInView, setStage]);
 
     return (
         <section className="py-20 px-6 relative z-50" id="details" ref={containerRef}>
@@ -50,27 +40,16 @@ export default function ProductShowcase() {
                         {/* Placeholder Background */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-[2rem] pointer-events-none border border-primary/5" />
 
-                        {/* The Arriving Plush - Cinematic Transition */}
-                        <AnimatePresence mode="popLayout">
-                            {stage === 'showcase' && (
-                                <motion.div
-                                    layoutId="cinematic-plush"
-                                    className="relative z-[9999] w-auto h-auto max-w-full max-h-full"
-                                    transition={{
-                                        layout: { type: "spring", stiffness: 100, damping: 20, duration: 1.5 }
-                                    }}
-                                >
-                                    <Image
-                                        src="/tedybear.png"
-                                        alt="Close up of high quality plush fabric"
-                                        width={500}
-                                        height={600}
-                                        className="w-full h-auto object-contain drop-shadow-2xl"
-                                        priority
-                                    />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        <div className="relative w-full h-full flex items-center justify-center">
+                            <Image
+                                src="/challengeimage.png"
+                                alt="Close up of high quality plush fabric"
+                                width={500}
+                                height={600}
+                                className="w-full h-auto object-contain drop-shadow-2xl"
+                                priority
+                            />
+                        </div>
                     </div>
 
                     {/* Floating Label 1 */}
@@ -107,7 +86,7 @@ export default function ProductShowcase() {
                         <span className="text-primary">À Câliner</span>
                     </h2>
                     <p className="text-lg text-text-muted leading-relaxed">
-                        Chaque ValenPlush est une pièce unique, née entre les mains d'artisans passionnés. Nous avons banni le synthétique rugueux pour ne garder que la caresse d'un velours hypoallergénique, aussi pur que vos sentiments.
+                        Chaque EternalPlush est une pièce unique, née entre les mains d'artisans passionnés. Nous avons banni le synthétique rugueux pour ne garder que la caresse d'un velours hypoallergénique, aussi pur que vos sentiments.
                     </p>
 
                     <ul className="flex flex-col gap-4">

@@ -33,10 +33,11 @@ export default function FinalCTA() {
                             onClick={triggerHeartExplosion}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="group relative inline-flex items-center justify-center px-12 py-8 font-bold text-primary transition-all bg-white rounded-full hover:shadow-[0_0_80px_rgba(255,255,255,0.4)] overflow-hidden"
+                            className="group relative inline-flex items-center justify-center px-8 py-4 md:px-12 md:py-8 font-bold text-primary transition-all bg-white rounded-full hover:shadow-[0_0_80px_rgba(255,255,255,0.4)] overflow-hidden"
                         >
-                            <span className="relative z-10 text-2xl tracking-tight mr-2">Recevoir mon cadeau</span>
-                            <ArrowRight className="relative z-10 w-6 h-6 transition-transform group-hover:translate-x-2" />
+                            <span className="relative z-10 text-lg md:text-2xl tracking-tight mr-2 block md:hidden">Je le veux</span>
+                            <span className="relative z-10 text-2xl tracking-tight mr-2 hidden md:block">Recevoir mon cadeau</span>
+                            <ArrowRight className="relative z-10 w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-2" />
 
                             {/* Hover Glare */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-100/30 to-transparent translate-x-[-100%] group-hover:animate-shine" />

@@ -3,10 +3,13 @@
 import { LucideHeart, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+
+
 import { useState } from 'react';
 
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     return (
         <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 md:px-10 py-4 bg-white/80 backdrop-blur-md sticky top-0 z-50 transition-all">
             <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
@@ -17,7 +20,7 @@ export default function Header() {
                 >
                     <LucideHeart className="w-7 h-7 fill-primary filter drop-shadow-md" />
                 </motion.div>
-                <h2 className="text-xl font-bold leading-tight tracking-tight text-text-main group-hover:text-primary transition-colors">ValenPlush</h2>
+                <h2 className="text-xl font-bold leading-tight tracking-tight text-text-main group-hover:text-primary transition-colors">EternalPlush</h2>
             </div>
 
             {/* Desktop Nav */}
@@ -51,6 +54,7 @@ export default function Header() {
             <button
                 className="md:hidden text-text-main p-2"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle menu"
             >
                 {isMobileMenuOpen ? (
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -69,7 +73,7 @@ export default function Header() {
                             <a className="text-base font-semibold text-text-main hover:text-primary transition-colors" href="#reviews" onClick={() => setIsMobileMenuOpen(false)}>Avis</a>
                         </nav>
                         <button className="w-full h-12 rounded-full bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
-                            Commander
+                            Offrir l'Amour
                         </button>
                     </div>
                 )
