@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://valentine-plush.vercel.app/sitemap.xml',
+        sitemap: 'https://valentine-mu.vercel.app/sitemap.xml',
     }
 }
